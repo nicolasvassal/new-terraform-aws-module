@@ -219,7 +219,7 @@ output "public_ip" {
 output "private_key" {
   value = tls_private_key.example.private_key_pem
 }*/
-  #test
+
 locals {
   addrs_by_idx  = cidrsubnets(var.base_cidr_block, var.networks[*].new_bits...)
 #  addrs_by_name = { for i, n in var.networks : n.name => local.addrs_by_idx[i] if n.name != null }

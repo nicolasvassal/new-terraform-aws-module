@@ -1,4 +1,4 @@
-variable "region" {
+/*variable "region" {
 
   type        = string
   default     = "us-east-1"
@@ -35,4 +35,22 @@ variable "name" {
   description = "Name to be used on all the resources as identifier"
   type        = string
   default     = "wordpress"
+}*/
+
+/*output "network_cidr_blocks" {
+  value       = tomap(local.addrs_by_name)
+  description = "A map from network names to allocated address prefixes in CIDR notation."
+}*/
+
+variable "base_cidr_block" {
+  type        = string
+  description = "A network address prefix in CIDR notation that all of the requested subnetwork prefixes will be allocated within."
+}
+
+variable "networks" {
+  type = list(object({
+#    name     = string
+    new_bits = number
+  }))
+  description = "A list of objects describing requested subnetwork prefixes. new_bits is the number of additional network prefix bits to add, in addition to the existing prefix on base_cidr_block."
 }
